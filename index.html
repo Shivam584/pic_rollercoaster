@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop down</title>
+    <style>
+        *{
+            box-sizing: content-box;
+        }
+        body{
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: cornflowerblue;
+        }
+        .post-card{
+            background-color: whitesmoke;
+            padding: 1em;
+            position: relative;
+            box-shadow: 0 0 50px black;
+            overflow: hidden;  
+            height: 10em;    
+            transition: height 0.5s ease-in-out;      
+        }
+        .heading{
+            display: flex;
+            justify-content : space-around;
+            align-items: center;
+        }
+        img{
+            width: 25%;
+            border-radius: 30em;
+            object-fit: cover;
+        }
+        .head{
+            text-align: center;
+font-size: 2rem;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .head span{
+            font-size: 1.5rem;
+            color: grey;
+        }
+        .content{
+            margin-top: 2em;
+            border-top: 1px solid rgba(128, 128, 128, 0.623);
+            z-index: 100;
+        }
+        @keyframes slide-down {
+            0% {
+                opacity: 0;
+                transform: translateX(60px);
+               }
+  
+  80% {
+      transform: translateX(-5px);
+    }
+
+  100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+}
+.content li{
+    list-style: none;
+    padding: 1em;
+    
+}
+.content li a{
+    text-decoration: none;
+    color: rgb(49, 48, 48);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    transition: 0.5s ease-in-out;
+}
+.content li a:hover,.content li a:focus{
+    color: whitesmoke;
+    text-shadow: 2px 2px 5px black;
+            font-size: 1.5rem;
+        }
+        .toggle{
+            background-color: lightblue;
+            padding: 1em;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .drop{
+            
+            transition: transform 0.35s ease-in-out;
+    
+        }
+        .toggle:hover{
+    background-color: rgb(74, 189, 228);
+
+}
+.active{
+    height: 27em;
+}
+.active-anim{
+            animation: slide-down 1.5s ease-in-out;
+
+        }
+        .active-btn{
+            transform: rotate(-180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="post-card">
+        <div class="heading">
+        <img src="https://indianmemetemplates.com/wp-content/uploads/evil-doge.jpg" alt="not found">
+        <h2 class="head">This is Cheems<br><span> next gen Software Developer</span></h2>
+        </div>
+        <div class="content" >
+<ul>
+    <div>
+    <li><a href=""><ion-icon name="create-outline"></ion-icon> Edit Profile</a></li>
+    <li> <a href=""><ion-icon name="options-outline"></ion-icon> Option</a></li>
+    <li> <a href=""><ion-icon name="settings-outline"></ion-icon> Settings</a></li>
+    <li> <a href=""><ion-icon name="log-out-outline"></ion-icon> Logout</a></li>
+</div>
+</ul>
+</div>
+<div class="toggle" onclick=toggle()>
+    <ion-icon name="chevron-down-outline" class="drop"></ ion-icon>
+</div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    function toggle ()
+{
+    let post_card=document.querySelector('.post-card');
+    let Content=document.querySelector('.content');
+    let btn=document.querySelector('.drop');
+    post_card.classList.toggle('active');
+    Content.classList.toggle('active-anim');
+    btn.classList.toggle('active-btn');
+
+}
+</script>
+</body>
+</html>
